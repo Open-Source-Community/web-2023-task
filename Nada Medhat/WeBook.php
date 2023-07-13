@@ -71,6 +71,55 @@ error_reporting(0);
 
 <?php
 
+if (isset($_GET['Search'])) {
+    $title = $_FILES["Title"]["name"];
+    $Aname = $_FILES["Aname"]["name"];
+    if($title != NULL) {
+        $sql = "SELECT * FROM Books WHERE Title = '$title'";
+    }
+    else if($Aname != NULL) {
+        $sql = "SELECT * FROM Books WHERE AuthorName = '$Aname'";
+    }
+    else{
+        ptintf("Please enter a title of author name to search for books");
+    }
+    $results = mysqli_query($db, $sql);
+
+    printf(
+        "<table class='table container mt-4'>
+        <thead>
+            <tr>
+                <th scope='col'>Title</th>
+                <th scope='col'>Author Name</th>
+                <th scope='col'>Image</th>
+                <th scope='col'>Description</th>
+                <th scope='col'>Publication Date</th>
+            </tr>
+        </thead>
+        </table>");   
+        
+    foreach ($results as $row) {
+        printf(
+        "<table class='table container mt-4'>
+        <tbody>
+            <tr>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+                <td>%s</td>
+            </tr>
+        </tbody>
+        </table>",
+            htmlspecialchars($row["Title"], ENT_QUOTES),
+            htmlspecialchars($row["AuthorName"], ENT_QUOTES),
+            htmlspecialchars($row["Image"], ENT_QUOTES),
+            htmlspecialchars($row["Description"], ENT_QUOTES),
+            htmlspecialchars($row["PublicationDate"], ENT_QUOTES)
+        );
+    }
+}
+
 $msg = ""; 
 $db = mysqli_connect("localhost", "root", "", "WeBook"); 
 if (isset($_POST['uploadfile'])) {
@@ -95,49 +144,6 @@ if (isset($_POST['uploadfile'])) {
 
     }
 
-}
-if (isset($_GET['Search'])) {
-    $title = $_FILES["Title"]["name"];
-    $Aname = $_FILES["Aname"]["name"];
-    if($title != NULL) {
-        $sql = "SELECT * FROM Books WHERE Title = '$title'";
-    }
-    else if($Aname != NULL) {
-        $sql = "SELECT * FROM Books WHERE AuthorName = '$Aname'";
-    }
-    else{
-        ptintf("Please enter a title of author name to search for books");
-    }
-    $results = mysqli_query($db, $sql);       
-    foreach ($results as $row) {
-        printf(
-        "<table class='table container mt-4'>
-        <thead>
-            <tr>
-                <th scope='col'>Title</th>
-                <th scope='col'>Author Name</th>
-                <th scope='col'>Image</th>
-                <th scope='col'>Description</th>
-                <th scope='col'>Publication Date</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%s</td>
-                <td>%s</td>
-            </tr>
-        </tbody>
-        </table>",
-            htmlspecialchars($row["Title"], ENT_QUOTES),
-            htmlspecialchars($row["AuthorName"], ENT_QUOTES),
-            htmlspecialchars($row["Image"], ENT_QUOTES),
-            htmlspecialchars($row["Description"], ENT_QUOTES),
-            htmlspecialchars($row["PublicationDate"], ENT_QUOTES)
-        );
-    }
 }
 
 $result = mysqli_query($db, "SELECT * FROM image");
