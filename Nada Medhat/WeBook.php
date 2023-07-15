@@ -17,14 +17,14 @@
         <form method="GET" action="" enctype="multipart/form-data">
 
             <label for="title">Title:</label><br>
-            <input type="text" id="bookTitle" name="Title" autofocus><br>
+            <input type="text" id="title" name="title" autofocus><br>
 
             <p> Or </p>
 
-            <label for="author">Author Name:</label><br>
-            <input type="text" id="AuthorName" name="Aname"><br><br>
+            <label for="authorName">Author Name:</label><br>
+            <input type="text" id="authorName" name="authorName"><br><br>
 
-            <button type="submit" name="Search">
+            <button type="submit" name="Search" >
 
                 Search
 
@@ -35,31 +35,17 @@
 
     <hr>
 
-    <div class="center"> 
+    <div class="center">
+        <h3> insert a row </h3>
+        <button type="submit" name="insert" onclick="textBoxesAppear()">
 
-        <h3> Uploading image </h3>
+            insert a row
 
+        </button>
     </div>
 
-    <div id="wrapper">
-        <form method="POST" action="" enctype="multipart/form-data">
-
-            <input type="file" name="choosefile" value="" />
-
-            <div>
-
-                <button type="submit" name="uploadfile">
-
-                UPLOAD
-
-                </button>
-
-            </div>
-
-        </form>
-
-    </div>
-
+    <hr>
+    
 </body>
 
 </html>
@@ -70,15 +56,16 @@ error_reporting(0);
 ?>
 
 <?php
+$db = mysqli_connect("localhost", "root", "", "WeBook"); 
 
 if (isset($_GET['Search'])) {
-    $title = $_FILES["Title"]["name"];
-    $Aname = $_FILES["Aname"]["name"];
+    $title = $_FILES["title"]["name"];
+    $Aname = $_FILES["authorName"]["name"];
     if($title != NULL) {
-        $sql = "SELECT * FROM Books WHERE Title = '$title'";
+        $sql = "SELECT * FROM Books WHERE title = '$title'";
     }
     else if($Aname != NULL) {
-        $sql = "SELECT * FROM Books WHERE AuthorName = '$Aname'";
+        $sql = "SELECT * FROM Books WHERE authorName = '$Aname'";
     }
     else{
         ptintf("Please enter a title of author name to search for books");
@@ -111,41 +98,79 @@ if (isset($_GET['Search'])) {
             </tr>
         </tbody>
         </table>",
-            htmlspecialchars($row["Title"], ENT_QUOTES),
-            htmlspecialchars($row["AuthorName"], ENT_QUOTES),
-            htmlspecialchars($row["Image"], ENT_QUOTES),
-            htmlspecialchars($row["Description"], ENT_QUOTES),
-            htmlspecialchars($row["PublicationDate"], ENT_QUOTES)
+            htmlspecialchars($row["title"], ENT_QUOTES),
+            htmlspecialchars($row["authorName"], ENT_QUOTES),
+            htmlspecialchars($row["image"], ENT_QUOTES),
+            htmlspecialchars($row["description"], ENT_QUOTES),
+            htmlspecialchars($row["publicationDate"], ENT_QUOTES)
         );
     }
 }
 
-$msg = ""; 
-$db = mysqli_connect("localhost", "root", "", "WeBook"); 
-if (isset($_POST['uploadfile'])) {
+function textBoxesAppear()
+{
+    printf("<form method='GET' action='' enctype='multipart/form-data'>
+
+            <label for='title'>Title:</label><br>
+            <input type='text' id='title' name='title' autofocus><br>
+
+            <label for='authorName'>Author Name:</label><br>
+            <input type='text' id='authorName' name='authorName'><br><br>
+
+            <label for='image'>image:</label><br>
+            <input type='file' name='choosefile' value='' />
+
+            <div>
+
+                <button type='submit' name='uploadfile'>
+
+                UPLOAD
+
+                </button>
+
+            </div>
+
+            <label for='description'>description:</label><br>
+            <input type='text' id='description' name='description'><br><br>
+
+            <label for='publicationDate'>publicationDate:</label><br>
+            <input type='text' id='publicationDate' name='publicationDate'><br><br>
+
+            <button type='submit' name='DoneInsertion' >
+
+                Done
+
+            </button>
+        </form>"
+    );
+}
+
+if(isset($_POST['DoneInsertion'])) 
+{
+    $title = $_POST['title'];
+    $Aname = $_POST['authorName'];
 
     $filename = $_FILES["choosefile"]["name"];
 
     $tempname = $_FILES["choosefile"]["tmp_name"];  
 
-        $folder = "image/".$filename;   
+    $description = $_POST['description'];
+    $pubDate = $_POST['publicationDate'];
 
-        $sql = "INSERT INTO Books (image) VALUES ('$filename')";
+    $folder = "image/".$filename;   
 
-        mysqli_query($db, $sql);       
+    // SQL query to insert user data into the users table
+    $query= "INSERT INTO Books VALUES('{$title}','{$Aname}','{$filename}','{$description}','{$pubDate}')";
+    $add_book = mysqli_query($db,$query);
+    
+    // displaying proper message for the user to see whether the query executed perfectly or not 
+        if (!$add_book) {
+            echo "something went wrong ". mysqli_error($db);
+        }
 
-        if (move_uploaded_file($tempname, $folder)) {
-
-            $msg = "Image uploaded successfully";
-
-        }else{
-
-            $msg = "Failed to upload image";
-
-    }
-
+        else {
+            echo "<script type='text/javascript'>alert('User added successfully!')</script>";
+        }         
 }
-
-$result = mysqli_query($db, "SELECT * FROM image");
 
 ?>
