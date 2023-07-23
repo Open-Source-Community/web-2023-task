@@ -3,11 +3,11 @@ include('dbconnection.php');
 if(isset($_POST['submit']))
   {
 $title=$_GET['title'];
- $image=$_FILES["image"]["name"];
+$image=$_FILES["image"]["name"];
 $oldimage=$_POST['image'];
-$oldbimage="image"."/".$oldimage;
+$oldbimage="L:/'OSC Web Development'/xampp/htdocs/WeBook/image/".$oldimage;
 $extension = substr($image,strlen($image)-4,strlen($image));
-$allowed_extensions = array(".png");
+$allowed_extensions = array(".PNG", ".png");
 if(!in_array($extension,$allowed_extensions))
 {
     echo "<script>alert('Invalid format. Only png format allowed');</script>";
@@ -15,8 +15,8 @@ if(!in_array($extension,$allowed_extensions))
 else
 {
     $imgnewfile=md5($imgfile).time().$extension;
-    move_uploaded_file($_FILES["image"]["tmp_name"],"image/".$imgnewfile);
-    $query=mysqli_query($con, "update books set image='$imgnewfile' where title like '$title' ");
+    move_uploaded_file($_FILES["image"]["tmp_name"], "L:/'OSC Web Development'/xampp/htdocs/WeBook/image/".$image);
+    $query=mysqli_query($con, "update books set image='$image' where title like '$title' ");
     if ($query) {
         unlink($oldbimage);
         echo "<script>alert('book image updated successfully');</script>";
@@ -39,7 +39,7 @@ while ($row=mysqli_fetch_array($ret)) {
 <p class="hint-text">Update Book Image.</p>
 <input type="hidden" name="image" value="<?php  echo $row['image'];?>">
 <div class="form-group">
-<img src="image/<?php  echo $row['image'];?>" width="100" height="200">
+<img src="<?php  echo $row['image'];?>" width="100" height="200">
 </div>
  
 <div class="form-group">

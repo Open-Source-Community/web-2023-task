@@ -33,7 +33,7 @@ while ($row=mysqli_fetch_array($ret)) {
 <p class="hint-text">Update book info.</p>
  
 <div class="form-group">
-<img src="image/<?php  echo $row['image'];?>" width="100" height="200">
+<img src="<?php  echo $row['image'];?>" width="100" height="200">
 <a href="change-image.php?title=<?php echo $row['title'];?>">Change Image</a>
 </div>
  

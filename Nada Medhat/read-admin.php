@@ -14,6 +14,9 @@ while ($row=mysqli_fetch_array($ret)) {
  
 ?>
  <br>
+<div class="col-sm-7">
+<a href="edit.php?edittitle=<?php echo htmlentities ($row['title']);?>" class="btn btn-primary"><span>Edit Book Details</span></a>
+</div>
 </div>
 </div>
  

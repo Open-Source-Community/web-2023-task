@@ -18,8 +18,8 @@ if(!in_array($extension,$allowed_extensions))
 }
 else
 {
-    $imgnewfile=md5($imgfile).time().$extension;
-    move_uploaded_file($_FILES["image"]["tmp_name"],"image/".$imgnewfile);
+    $imgnewfile=md5($image).time().$extension;
+    move_uploaded_file($_FILES["image"]["tmp_name"], "L:/'OSC Web Development'/xampp/htdocs/WeBook/image/".$image);
     $query=mysqli_query($con, "insert into books(title, authorName, image, description, publicationDate) value('$title','$authorName', '$image', '$description', '$pubDate')");
     if ($query) {
         echo "<script>alert('You have successfully inserted the data');</script>";

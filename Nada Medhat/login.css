@@ -1,0 +1,240 @@
+body {
+    background-color: #4f596d;
+    background-size: cover;
+}
+
+.container {
+    display: grid;
+    width: 85%;
+    height: 80vh;
+    margin-top: 60px;
+    margin-left: 100px;
+    background-color: none;
+    grid-template-columns: 60% 40%;
+    grid-auto-rows: minmax(200px, auto);
+}
+
+.box {
+
+    text-align: center;
+    box-shadow: -30px 30px 20px rgb(0, 0, 0, 0.3);
+}
+
+.left {
+
+    display: grid;
+    grid-template-rows: 15% 85%;
+    background-color: rgb(221, 217, 221);
+    border-bottom-left-radius: 15px;
+    grid-auto-rows: minmax(200px, auto);
+    border-top-left-radius: 15px;
+    position: relative;
+
+
+}
+
+.left_header {
+    position: relative;
+}
+
+.logo {
+    position: relative;
+    background-color: saddlebrown;
+    z-index: 1;
+}
+
+.left .left_header img {
+    width: 12%;
+    position: absolute;
+    left: 20px;
+    top: 5px;
+
+}
+
+ul {
+
+    list-style-type: none;
+    padding-left: 0px;
+    margin: 0px;
+}
+
+ul li {
+    margin-right: 20px;
+    display: inline-block;
+    transition: 0.2s ease-in;
+    transition: 0.4s ease-out;
+}
+
+ul li :hover {
+
+    transform: scale(1.5);
+    transition: 0.2s ease-in;
+    transition: 0.4s ease-out;
+}
+
+ul li img {
+
+
+    width: 20px;
+
+
+
+}
+
+/*disapled in html*/
+.left .left_header .smnda {
+    position: absolute;
+    color: rgb(185, 86, 180);
+    position: absolute;
+    font-style: oblique;
+    font-family: 'Pacifico', cursive;
+    left: 70px;
+    top: -2px;
+    font-size: 15px;
+
+
+}
+
+.left_content .ln1 {
+
+    color: rgb(95, 95, 95);
+    font-family: sans-serif;
+}
+
+.left_content h2 {
+    width: 60%;
+    font-family: 'Fjalla One', sans-serif;
+    color: rgb(128, 65, 141);
+    font-weight: 600;
+    border-bottom: solid rgba(118, 90, 122, 0.281) 4px;
+    display: inline-block;
+    letter-spacing: 5px;
+
+
+}
+
+input {
+    outline: none;
+}
+
+input[type="text"],
+input[type="password"] {
+    border-radius: 20px;
+    border: 1px solid rgb(111, 80, 126);
+    width: 60%;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: transparent;
+    transition: 0.25s ease-in-out;
+}
+
+input[type="text"]:hover,
+input[type="password"]:hover {
+    transition: 0.25s ease-in-out;
+    box-shadow: -5px 5px 5px rgb(0, 0, 0, 0.2);
+    width: 65%;
+
+
+
+}
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+    transition: 0.25s ease-in-out;
+    box-shadow: -5px 5px 5px rgb(0, 0, 0, 0.2);
+    width: 65%;
+
+
+
+
+}
+
+input[type="submit"] {
+    color: rgb(255, 255, 255);
+    top: 50px;
+    border-radius: 20px;
+    background-color: #161e2d;
+    border: 1px solid rgb(51, 27, 63, 0.616);
+    width: 30%;
+    padding: 10px;
+    outline: none;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+input[type="submit"]:hover {
+    color: rgb(41, 28, 41);
+    transition: 0.5s ease-in-out;
+    background-color: transparent;
+
+}
+
+.linkk {
+    color: slateblue;
+    text-decoration: none;
+    transition: 0.2s ease-in-out;
+
+}
+
+.linkk:hover {
+    color: rgb(82, 72, 141);
+    transition: 0.2s ease-in-out;
+    text-decoration: underline;
+    letter-spacing: 0.35px;
+
+}
+
+.right {
+
+    background-image: url(w5.jpg);
+    background-size: contain;
+    border-bottom-right-radius: 15px;
+    border-top-right-radius: 15px;
+    padding-top: 33%;
+
+}
+
+.right h2 {
+
+    font-size: 40px;
+    font-family: 'Fjalla One', sans-serif;
+    color: white;
+    text-align: center;
+    letter-spacing: 5px;
+    margin: 0px;
+
+}
+
+.right p {
+    font-family: sans-serif;
+    font-size: 22px;
+    color: white;
+    text-align: center;
+    margin-top: 0.5em;
+    letter-spacing: -.1;
+
+}
+
+.right input {
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: rgb(255, 255, 255);
+
+    top: 50px;
+    border-radius: 20px;
+    background-color: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.616);
+    width: 40%;
+    padding: 10px;
+    outline: none;
+
+    cursor: pointer;
+    transition: 0.5s ease-in-out;
+}
+
+.right input:hover {
+    color: rgb(255, 255, 255);
+    transition: 0.5s ease-in-out;
+    background-color: #161e2d
+}

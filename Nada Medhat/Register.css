@@ -1,0 +1,121 @@
+#Form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    background-color: rgb(236, 236, 236);
+    width: 300px;
+    height: 530px;
+    border-radius: 25px;
+    box-shadow: -7px 15px 15px rgb(209, 209, 209, 0.3);
+}
+
+#HaveAnAcc0 {
+    text-decoration: none;
+    font-size: 14px;
+    color: #3f2961;
+    transition: .25s;
+}
+
+#HaveAnAcc:hover {
+    font-size: 16px;
+    color: black;
+}
+
+
+h1 {
+    font-weight: bold;
+}
+
+input {
+    padding: 10px;
+    width: 100px;
+    margin: 7px;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    background: none;
+    text-align: center;
+    outline: none;
+    color: #3f2961;
+    transition: .25s;
+}
+
+#Submit {
+    padding: 10px;
+    width: 100px;
+    margin: 7px;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    text-align: center;
+    outline: none;
+    color: white;
+    background-color: #3f2961;
+    transition: .25s;
+}
+
+button {
+    padding: 10px;
+    width: 100px;
+    margin: 7px;
+    border: 3px solid #000000;
+    border-radius: 25px;
+    background: none;
+    text-align: center;
+    outline: none;
+    color: #3f2961;
+    transition: .25s;
+}
+
+input:focus,
+input:hover {
+    width: 200px;
+    border: 3px solid #6f7575;
+}
+
+
+#Submit:focus,
+#Submit:hover {
+    padding: 10px;
+    margin: 5px;
+    background-color: #6f7575;
+    color: White;
+    border: 2px solid #6f7575;
+    border-radius: 25px;
+    width: 100px;
+}
+
+#Triangle {
+    width: 0;
+    height: 0;
+    border-top: 35px solid transparent;
+    border-right: 70px solid #241717;
+    border-bottom: 35px solid transparent;
+    position: absolute;
+    left: 77%;
+    top: 9%;
+}
+
+#P {
+    font-size: 13px;
+    color: #3f2961;
+    font-weight: bold;
+}
+
+#googleicon {
+    position: absolute;
+    top: 91.5%;
+    left: 27%;
+}
+
+#facebookicon {
+    position: absolute;
+    top: 91.5%;
+    left: 45.8%;
+}
+
+#twittericon {
+    position: absolute;
+    top: 91.5%;
+    left: 65%;
+}
