@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fjalla+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="box left">
+            <div class="left_header">
+
+
+            </div>
+            <div class="left_content">
+                <h2>LOGIN TO BookStore</h2>
+                <ul>
+                    <li><a href="https://www.facebook.com"><img src="facebook1.png" alt=""></a></li>
+                    <li><a href="https://www.instagram.com/"><img src="insta.png" alt=""></a></li>
+                    <li><a
+                            href="https://accounts.google.com/signin/v2/identifier?service=mail&flowName=GlifWebSignIn&flowEntry=ServiceLogin"><img
+                                src="go.png" alt=""></a></li>
+                </ul>
+                <p class="ln1">or use your email account</p>
+
+                <form action="controllers/Login.php" method="post">
+                    <input type="text" name="email" placeholder=" 👤 Email">
+                    <br>
+                    <input type="text" name="password" placeholder=" 🔒 Password">
+                    <a href="#" class="linkk">
+                        <p>Forget your password ?</p>
+                    </a>
+                    <input type="submit" value="Sign in" name="login">
+
+                </form>
+
+            </div>
+
+        </div>
+        <div class="box right">
+
+            <h2>YOU'r NEW !?</h2>
+            <br>
+            <a href="Register.html"><input type="button" value="SIGN UP"></a>
+        </div>
+
+
+
+    </div>
+
+</body>
+
+</html>
