@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge" />
+    <title>Material Design for Bootstrap</title>
+    <!-- MDB icon -->
+    <link rel="icon" href="img/mdb-favicon.ico" type="image/x-icon" />
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <!-- Google Fonts Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" />
+    <!-- MDB -->
+    <link rel="stylesheet" href="css/mdb.min.css" />
+</head>
+
+<body>
+
+    <div class="containar my-5">
+        <div class="row d-flex justify-content-center">
+
+            <div class="col-md-6">
+                <div class="card shadow-1-strong">
+                    <div class="card-header text-center">
+                        <form name="myForm" action="" method="GET">
+                            <label for="City">City</label>
+                            <input type="text" name="inputbox" value="">
+                            <input type="button" name="button" value="Display" onClick="testResults(this.form)">
+                        </form>
+
+
+                        <p class="h1 mb-1" id="wrapper-city"></p>
+                        <p class="mb-1" id="wrapper-name"></p>
+                        <p class="display-1 mb-1" id="wrapper-temp"></p>
+                        <p class="mb-1" id="wrapper-feelslike"></p>
+                        <span>Pressure: <span id="wrapper-pressure"></span></span>
+                        <span class="mx-2">|</span>
+                        <span>Humidity: <span id="wrapper-humidity"></span></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+
+
+
+    <script type="text/javascript" src="js/mdb.min.js"></script>
+    <!-- Custom scripts -->
+    <script type="text/javascript">
+        function testResults(form) {
+            let inputValue;
+            inputValue = form.inputbox.value;
+            console.log(inputValue)
+            main(inputValue);
+        }
+
+        function main(inputValue) {
+            let file;
+            console.log(inputValue)
+            if (inputValue) {
+                file = "http://api.weatherapi.com/v1/current.json?key=6736b329a93c474ead4155749230908&q=" + inputValue + "&aqi=no"
+            } else {
+                file = "http://api.weatherapi.com/v1/current.json?key=6736b329a93c474ead4155749230908&q=london&aqi=no"
+            }
+
+            fetch(file)
+                .then((response) => response.json())
+                .then((data) => {
+                    let city = data.location.name
+                    let main = data.current.condition.text
+                    let temp = Math.round(data.current.temp_c)
+                    let feelslike = Math.round(data.current.feelslike_c)
+                    let humidity = Math.round(data.current.humidity)
+                    let pressure = Math.round(data.current.pressure_mb)
+
+                    document.getElementById("wrapper-city").innerHTML = city
+                    document.getElementById("wrapper-name").innerHTML = main
+                    document.getElementById("wrapper-temp").innerHTML = temp + " ْC"
+                    document.getElementById("wrapper-feelslike").innerHTML = "Feels Like: " + feelslike + " ْC"
+                    document.getElementById("wrapper-humidity").innerHTML = humidity
+                    document.getElementById("wrapper-pressure").innerHTML = pressure
+
+                })
+        }
+    </script>
+</body>
+
+</html>
